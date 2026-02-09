@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:            
+    db:
+        image: bitnami/postgresql:latest
+        environment:
+            POSTGRES_USER: docker
+            POSTGRES_PASSWORD: docker
+            POSTGRES_DB: tasks
+        ports:
+            - "5432:5432"
+        volumes:
+            - tasks_pg_data:/bitnami/postgresql
+        restart: always
+
+volumes:
+    tasks_pg_data:

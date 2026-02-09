@@ -4,15 +4,26 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import {
     Plus,
     List,
     Check,
     CircleAlert,
-    SquarePen,
     Trash,
     ListCheck,
     Sigma,
 } from "lucide-react";
+import EditTask from "@/components/edit-task";
 
 export default function Home() {
     return (
@@ -44,10 +55,10 @@ export default function Home() {
                             <div className="w-1 h-full bg-green-300"></div>
                             <p className="flex-1 px-2 text-sm">Estudar React</p>
                             <div className="flex items-center gap-4">
-                                <SquarePen
-                                    size={16}
-                                    className="cursor-pointer"
-                                />
+
+
+                                <EditTask />
+
                                 <Trash size={16} className="cursor-pointer" />
                             </div>
                         </div>
@@ -58,13 +69,37 @@ export default function Home() {
                             <ListCheck size={18} />
                             <p className="text-xs">tarefas concluidas (3/3)</p>
                         </div>
-                        <Button className="text-xs h-7 cursor-pointer" variant="outline">
-                            <Trash /> Limpar tarefas concluidas 
-                        </Button>
+
+                        <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                                <Button
+                                    className="text-xs h-7 cursor-pointer"
+                                    variant="outline"
+                                >
+                                    <Trash /> Limpar tarefas concluidas
+                                </Button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                                <AlertDialogHeader>
+                                    <AlertDialogTitle>
+                                        Tem certeza que deseja excluir X items?
+                                    </AlertDialogTitle>
+                                </AlertDialogHeader>
+                                <AlertDialogFooter>
+                                    <AlertDialogAction>Sim</AlertDialogAction>
+                                    <AlertDialogCancel>
+                                        Cancelar
+                                    </AlertDialogCancel>
+                                </AlertDialogFooter>
+                            </AlertDialogContent>
+                        </AlertDialog>
                     </div>
 
                     <div className="h-4 w-full bg-gray-100 mt-4 rounded-md">
-                        <div className="h-full bg-blue-500 rounded-md" style={{ width: "50%" }}></div>
+                        <div
+                            className="h-full bg-blue-500 rounded-md"
+                            style={{ width: "50%" }}
+                        ></div>
                     </div>
 
                     <div className="flex justify-end items-center mt-2 gap-2">
