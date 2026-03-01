@@ -1,3 +1,5 @@
+"use client";
+
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -24,8 +26,15 @@ import {
     Sigma,
 } from "lucide-react";
 import EditTask from "@/components/edit-task";
+import { getTasksFromDB } from "@/actions/get-tasks-from-db";
 
 export default function Home() {
+
+    const handleGetTasks = async () => {
+        const tasks = await getTasksFromDB();
+        console.log(tasks)
+    }
+
     return (
         <div className="w-full h-screen bg-gray-100 flex items-center justify-center">
             <Card className="w-lg">
@@ -35,6 +44,8 @@ export default function Home() {
                         <Plus /> Cadastrar
                     </Button>
                 </CardHeader>
+
+                <Button onClick={handleGetTasks}>Carregar tarefas</Button>
 
                 <CardContent>
                     <Separator className="mb-4" />
